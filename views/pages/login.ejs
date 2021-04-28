@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="/css/register.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-7 login-left">
+            </div>
+            <div class="col-5 mt-2">
+                <div>
+                    <% if(errors != "") { %>
+                        <% errors.forEach((item) => { %>
+                            <div class="alert alert-danger">
+                                <%- item %>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                </div>
+                <br><br><br><br>
+                <form method="POST" action="/login">
+                    <hr>
+                    <div class="form-group">
+                        <i class="fa fa-user-circle"></i>
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email"  placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </form>
+
+                <hr>
+                <div class="no-account">
+                    <span>Doesn't have an account? <a href="/account/register">Create a new account</a>.</span>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    
+</div>
+    
+</body>
+</html>
