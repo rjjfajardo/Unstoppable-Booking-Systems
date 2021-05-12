@@ -9,6 +9,8 @@ const session = require('express-session')
 const connectFlash = require('connect-flash')
 const passport = require('passport')
 
+const connection = require("./config/connectionDB")
+
 
 
 let app = express();
@@ -37,6 +39,10 @@ configViewEngine(app);
 
 // Walkthrough
 // initPageRoutes(app);
+
+
+
+
 
 //Enable flash message
 app.use(connectFlash());

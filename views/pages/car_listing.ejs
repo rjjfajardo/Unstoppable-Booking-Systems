@@ -1,0 +1,307 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+  <title>Car Details</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="Homepage.html">LOGO</a>
+      <div class="navbar justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav justify-content-end">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hi!, User
+              <!-- Add dynamic user here -->
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="profile.html">Account Info</a></li>
+              <li><a class="dropdown-item" href="#">Modify Reservation</a></li>
+              <li><a class="dropdown-item" href="#">Recent Searches</a></li>
+              <li><a class="dropdown-item" href="#">Contact Us</a></li>
+              <li><a class="dropdown-item" href="#">About Us</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+          <li>
+            <!-- Insert Bell notif here -->
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container mt-5 content"><!-- CONTENT --></div>
+
+  
+
+  
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="footer__wrapper">
+        <div class="row pb-5 mb-5">
+            <div class="col-sm-6 col-md-4 pl-3">
+                <h2>UNSTOPPABLE</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, placeat porro illo maiores reiciendis, perferendis earum, aspernatur adipisci quam cupiditate eaque neque enim voluptatum quia recusandae assumenda eum sequi. Odio?</p>
+            </div>
+            <div class="col-sm-6 col-md-2 pl-3">
+                <h3 class="footer__title">Visit</h3>
+                <p>Nasipit Talamban Cebu City 34 Tesla, Site 100 Unstoppable Car Rentals</p>
+                <h3 class="footer__title">Contacts</h3>
+                <p>johndoe@gmail.com<br>999123456789</p>
+            </div>
+            <div class="col-sm-6 col-md-2 pl-3">
+                <h3 class="footer__title">Explore</h3>
+                    <span class="d-sm-flex">
+                    <a href="#">Home</a>
+                </span>
+                <span class="d-sm-flex">
+                    <a href="#">About Us</a>
+                </span>
+                <span class="d-sm-flex">
+                    <a href="#">Offers</a>
+                </span>
+                <span class="d-sm-flex">
+                    <a href="#">Contacts</a>
+                </span>
+            </div>
+            <div class="col-sm-6 col-md-2 pl-3">
+                <h3 class="footer__title d-flex">Follow</h3>
+                <span class="d-sm-flex">
+                    <a href="#">Instagram</a>
+                </span>
+                <span class="d-sm-flex">
+                    <a href="#">Twitter</a>
+                </span>
+                <span class="d-sm-flex">
+                    <a href="#">Facebook</a>
+                </span>
+            </div>
+            <div class="col-sm-6 col-md-2 pl-3">
+                <h3 class="footer__title">Legal</h3>
+                <span class="d-sm-flex">
+                    <a href="#">Terms</a>
+                </span>
+                <span class="d-sm-flex">
+                    <a href="#">Privacy</a>
+                </span>
+            </div>
+        </div>
+        <p class="text-muted">© Copyright 2021, Unstoppable Car Rentals</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+  <script>
+    const content = document.querySelector('.content');
+
+    $(document).ready(function() {
+      //LOAD CONTENT
+      content.innerHTML = "";
+      let img_source = sessionStorage.getItem("img");
+      let detail_title = sessionStorage.getItem("detail_title");
+      let detail_specs = JSON.parse(sessionStorage.getItem("detail_specs"));
+
+      let prev = document.createElement('div');
+      prev.classList.add('btn_main');
+
+      let prev_btn = document.createElement('a');
+      prev_btn.setAttribute("href", "javascript:history.go(-1)");
+      prev_btn.classList.add('previous');
+      prev_btn.innerHTML = "&laquo;Go Back";
+
+      let row = document.createElement('div');
+      row.classList.add('row');
+      row.id = "img_gallery";
+
+      let col0 = document.createElement('div');
+      col0.classList.add('col-lg-9', 'gallery_row');
+      
+      //Main img
+      let img0 = document.createElement('img');
+      img0.classList.add('gallery_img');
+      img0.id = 'img0';
+      img0.src = img_source;
+      img0.addEventListener("click", function(){
+        zoom('img0');
+      });
+      //Side img
+      let col = document.createElement('div');
+      col.classList.add('col-lg-2', 'col-md-12','side_bar_img');
+      for (let i = 0; i < 3; i++) {
+        let img_col = document.createElement('div');
+        img_col.classList.add('col');
+
+        let side_img = document.createElement('img');
+        side_img.classList.add('gallery_side_img');
+        side_img.id = 'img' + (i + 1);
+        side_img.src = img_source;
+        side_img.addEventListener("click", function() {
+          zoom('img'+(i+1));
+        });
+
+        img_col.appendChild(side_img);
+        col.appendChild(img_col);
+      }
+
+      let spacer = document.createElement('div');
+      spacer.classList.add('col');
+      //details
+      let detail_row = document.createElement('div');
+      detail_row.classList.add('row', 'mt-5', 'detail_row');
+
+      let detail_col = document.createElement('div');
+      detail_col.classList.add('col-lg-8', 'detail_field');
+
+      let hr = document.createElement('hr');
+      let hr0 = document.createElement('hr');
+      let hr1 = document.createElement('hr');
+
+      let title = document.createElement('h5');
+      title.innerText = detail_title;
+
+      let desc = document.createElement('h5');
+      desc.innerText = "Description";
+      let desc_p = document.createElement('p');
+      desc_p.innerText = "You can add here your description.";
+
+      let specs = document.createElement('h5');
+      specs.innerText = "Specification";
+
+      let spec_ul = document.createElement('ul');
+
+      for (let j = 0; j < detail_specs.length; j++) {
+        let spec_li = document.createElement('li');
+        spec_li.innerText = detail_specs[j];
+        spec_ul.appendChild(spec_li);
+      }
+      //side detail One
+      let reserve_col = document.createElement('div');
+      reserve_col.classList.add('col-lg-4', 'detail_field');
+
+      let reserve_h5 = document.createElement('h5');
+      reserve_h5.innerText = "Make Reservation";
+
+      let pud_formGroup = document.createElement('div');
+      pud_formGroup.classList.add('form-group', 'row');
+
+      let reserve_label = document.createElement('label');
+      reserve_label.setAttribute("for", "reserve_pickup_date");
+      reserve_label.classList.add('col-12', 'mt-2');
+      reserve_label.innerText = "Pick-up date*";
+
+      let pud_input_col = document.createElement('div');
+      pud_input_col.classList.add('col-12');
+
+      let pud_input = document.createElement('input');
+      pud_input.classList.add('form-control');
+      pud_input.setAttribute("type", "date");
+      pud_input.id = "reserve_pickup_date";
+
+      //side detail Two
+      let pud_formGroup0 = document.createElement('div');
+      pud_formGroup0.classList.add('form-group', 'row');
+
+      let reserve_label0 = document.createElement('label');
+      reserve_label0.setAttribute("for", "reserve_return");
+      reserve_label0.classList.add('col-12', 'mt-2');
+      reserve_label0.innerText = "Retrun date*";
+
+      let pud_input_col0 = document.createElement('div');
+      pud_input_col0.classList.add('col-12');
+
+      let pud_input0 = document.createElement('input');
+      pud_input0.classList.add('form-control');
+      pud_input0.setAttribute("type", "date");
+      pud_input0.id = "reserve_return";
+      //button
+      let btn_wrap = document.createElement('div');
+      btn_wrap.classList.add('btn_main');
+
+      let btn_a = document.createElement('a');
+      btn_a.classList.add('btn', 'button');
+      btn_a.innerText = "Make Reservation";
+
+      //prev
+      prev.appendChild(prev_btn);
+      //img
+      col0.appendChild(img0);
+      row.appendChild(col0);
+      row.appendChild(col);
+      row.appendChild(spacer);
+      //details
+      detail_col.appendChild(title);
+      detail_col.append(hr);
+      detail_col.appendChild(desc);
+      detail_col.appendChild(desc_p);
+      detail_col.appendChild(hr0);
+      detail_col.appendChild(specs);
+      detail_col.appendChild(spec_ul)
+      detail_col.append(hr1);
+      detail_row.appendChild(detail_col);
+      //side detail one
+      reserve_col.appendChild(reserve_h5);
+      reserve_col.appendChild(pud_formGroup);
+      pud_formGroup.appendChild(reserve_label);
+      pud_formGroup.appendChild(pud_input_col);
+      pud_input_col.appendChild(pud_input);
+      //side detail two
+      reserve_col.appendChild(pud_formGroup0);
+      pud_formGroup0.appendChild(reserve_label0);
+      pud_formGroup0.appendChild(pud_input_col0);
+      pud_input_col0.appendChild(pud_input0);
+      //button
+      btn_wrap.appendChild(btn_a);
+      
+      content.appendChild(prev);
+      content.appendChild(row);
+      content.appendChild(detail_row);
+      detail_row.appendChild(reserve_col);
+      content.appendChild(btn_wrap);
+
+    });
+
+    //RESIZE
+    $(window).resize(function () {
+      var viewportWidth = $(window).width();
+      if (viewportWidth < 993) {
+        $(".side_bar_img").addClass('d-flex');
+        $(".side_bar_img").addClass('pt-5');
+      } else {
+        $(".side_bar_img").removeClass('d-flex');
+        $(".side_bar_img").removeClass('pt-5');
+      }
+    });
+    //MODAL
+    function zoom(img_id) {
+      let modal = $("#myModal");
+      let img = document.getElementById(img_id);
+      let modalImg = $("#img01");
+      $(".close").click(function() {
+        modal.css("display", "none");
+      });
+      modal.css("display", "block");
+      modalImg.attr('src', img.src);
+    }
+  </script>
+</body>
+
+</html>

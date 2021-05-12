@@ -1,0 +1,248 @@
+.tab_container
+{
+  width: 100%;
+  height: 350px;
+  margin-bottom: 50px;
+}
+.tab_panel
+{
+  min-height: 100vh;
+}
+/* BUTTONS */
+.tab_container .button_container
+{
+  height: 10%;
+}
+.tab_container .button_container button
+{
+  height: 100%;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  /* 15px */
+}
+.profile_content .btn
+{
+  font-size: 15px;
+}
+.profile_content .button
+{
+  background-color: rgb(253, 102, 33);
+  height: 75%;
+  color: white;
+  transition: all 0.2s ease-in-out; 
+}
+.tab_container .tab_panel
+{
+  padding-top: 55px;
+  height: 85%;
+  color: #323232;
+  text-align: center;
+  display: none;
+}
+.profile_sidebar
+{
+  padding-top: 70px;
+  margin-bottom: 30px;
+}
+.profile_sidebar img
+{
+  width: 155px;
+  height: 150px;
+}
+.profile_content
+{
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #DCDCDC;
+  margin-right: 30px;
+  margin-bottom: 50px;
+}
+.profile_content .button:hover
+{
+  background-color: rgb(253, 102, 33, 0.6);
+  color: white;
+}
+.profile_content p
+{
+  font-size: 16px;
+  padding-top: 16px;
+}
+.profile_content h2
+{
+  font-size: 20px;
+  font-weight: 600;
+  color: #FD6621;
+  margin: 0;
+}
+.profile_content label
+{
+  font-size: 18px;
+  font-weight: 600;
+}
+.edit_buttons
+{
+  margin-top: 20px;
+}
+.profile_content .cancel_button
+{
+  margin-left: 10px;
+  border: 1px solid #FD6621;
+}
+.info_edit label
+{
+  font-size: 15px;
+  font-weight: 550;
+}
+.address_block p
+{
+  margin: 0;
+  padding: 0;
+}
+.hide 
+{
+  display: none;
+}
+#edit_btn 
+{
+  height: 100%;
+}
+.user_data p
+{
+  margin: 0;
+  padding: 0;
+}
+/* CARD STYLE */
+.card
+{
+  margin: auto; margin-bottom: 15px;
+}
+.card-body h5
+{
+  color: #3b3b3b;
+  font-size: 15px;
+  font-weight: bolder;
+}
+.card ul
+{
+  list-style: none;
+  margin: 0; 
+  padding: 0 14px;
+}
+.card ul li
+{
+  padding: 0 2px;
+}
+.list-item
+{
+  padding: 0;
+  margin-bottom: 10px;
+}
+.feature
+{
+  border: 1px solid #3b3b3b;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.feature p
+{
+  color: #3b3b3b;
+  font-size: 12px;
+}
+.button_wrap
+{
+  padding: 0px 0px 15px 15px;
+  margin-top: 0;
+}
+.button_wrap a
+{
+  text-decoration: none;
+  background-color: #FD6621;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-right: 5px;
+  font-size: 12px;
+  padding: 4px 5px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out; 
+}
+.button_wrap a:hover
+{
+  background-color: rgb(253, 102, 33, 0.6);
+  color: white;
+}
+.card-img-top
+{
+  background-repeat: no-repeat;
+  background-size:cover;
+  min-height: 200px;
+  height: auto;
+  box-sizing: border-box;
+}
+#img_gallery
+{
+  width: 62.5rem;
+}
+.gallery_row img
+{
+  width: 100%;
+  padding: 0;
+}
+.gallery_img
+{
+  background-size:contain;
+  min-height: 200px;
+  height: 70vh;
+  box-sizing: border-box;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.gallery_img:hover, .gallery_side_img:hover
+{
+  opacity: 0.7;
+}
+.gallery_side_img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 15vh;
+  margin: 0 0 30px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.detail_row h5
+{
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+  color: #3b3b3b;
+}
+.detail_row ul
+{
+  margin: 0;
+  padding: 0;
+}
+.detail_row ul li
+{
+  list-style: none;
+  display: inline;
+  padding: 10px;
+}
+.detail_row label
+{
+  font-size: 15px;
+  color: #3b3b3b;
+}
+.previous
+{
+  display: inline-block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}

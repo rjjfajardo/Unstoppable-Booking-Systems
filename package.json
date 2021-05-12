@@ -1,5 +1,5 @@
 {
-  "name": "node-ejs",
+  "name": "ejs",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
@@ -17,5 +17,18 @@
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
-  }
+  },
+  "description": "",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjjfajardo/Unstoppable-Booking-Systems.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjjfajardo/Unstoppable-Booking-Systems/issues"
+  },
+  "homepage": "https://github.com/rjjfajardo/Unstoppable-Booking-Systems#readme"
 }

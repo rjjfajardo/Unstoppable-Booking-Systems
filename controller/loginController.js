@@ -38,6 +38,8 @@ let checkLoggedIn = (req, res, next) => {
     next();
 };
 
+
+
 let checkLoggedOut = (req, res, next) => {
     if (req.isAuthenticated()) {
         return res.redirect("/");
