@@ -2,11 +2,10 @@
 const connection = require('../config/connectionDB')
 
 let viewCarDetails = async (req, res) => {
+    const carQuery = 'SELECT * FROM cars WHERE id = ?';
 
-    const carQuery = 'SELECT * FROM car_details';
-
-    res.render('car_listing.ejs', {
-        carQuery
+    connection.query(carQuery, req.params.car_id, (req, result) => {
+        res.render('car_listing.ejs', {car: result})
     })
 }
 

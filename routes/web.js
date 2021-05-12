@@ -48,7 +48,7 @@ let initWebRoutes = (app) => {
     router.get("/welcome", indexController.getPageIndex);
     router.get("/about", indexController.getAboutPage);
     router.get("/search_results", searchResults.getSearchResults);
-    router.get("/booking", reserveController.getReservationPage)
+    router.get("/booking/:car_id", reserveController.getReservationPage)
     router.get("/view_car/:car_id", viewCarDetailsController.viewCarDetails)
     
     

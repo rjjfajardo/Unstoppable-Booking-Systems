@@ -19,7 +19,7 @@
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Welcome, <% user.fullname%>
+              Welcome, <%= user[0].fullname %>
               <!-- Add dynamic user here -->
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -71,6 +71,7 @@
               <div class="name mt-4" id="name_section">
                 <label for="name">Name</label>
                 <div class="user_data" id="name_data">
+                  <%= user[0].fullname %>
                   <p class="text-muted" id="user_name"></p>
                 </div>
                 <!-- EDIT -->
@@ -79,7 +80,7 @@
                     <div>
                       <label for="firstName">Full Name</label>
                       <div class="input-group flex-nowrap mb-1">
-                        <input type="text" class="form-control" placeholder="" aria-label="first_name" aria-describedby="addon-wrapping" value="<%= user.fullname%>"id="first_name" required>
+                        <input type="text" class="form-control" placeholder="" aria-label="first_name" aria-describedby="addon-wrapping" value="<%= user[0].fullname%>"id="first_name" required>
                       </div>
                       
                     </div>
@@ -91,6 +92,7 @@
                 <label for="email">Email</label>
                 <div class="user_data" id="email_data">
                   <div class="d-flex justify-content-between">
+                    <%= user[0].email %>
                     <p class="mt-1 text-muted" id="user_email"></p>
                   </div>
                 </div>
@@ -132,6 +134,7 @@
                 <label for="date_of_birth">Date of Birth</label>
                 <div class="user_data" id="dob_data">
                   <div class="d-flex justify-content-between">
+                    <%= user[0].birthdate %>
                     <p class="mt-1 text-muted" id="user_DoB"></p>
                   </div>
                 </div>
@@ -177,6 +180,7 @@
               <div class="address mt-4" id="address_section">
                 <label for="address">Address</label>
                 <div class="user_data" id="address_data">
+                  <%= user[0].address %>
                   <div class="d-flex justify-content-between">
                     <div class="mt-1 address_block">
                       <p class="text-muted" id="user_addressOne"></p>
