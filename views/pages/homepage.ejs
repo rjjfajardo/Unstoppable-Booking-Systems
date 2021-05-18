@@ -22,7 +22,7 @@
             <ul class="navbar-nav justify-content-end">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Hi!, User
+                  Welcome back, <%= user.fullname %>
                   <!-- Add dynamic user here -->
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -46,6 +46,8 @@
           </div>
         </div>
       </nav>
+
+     
       <div class="hero__">
         <form class="filter_form" method="GET" action="/search_results"  autocomplete="off">
           <div class="filter_container">
@@ -63,7 +65,7 @@
                   </div>
                 </div>
                 <div class="price_range mt-4">
-                  <input type="text" id="rangePrimary" name="rangePrimary" value="" />
+                  <input type="text" id="rangePrimary" name="rangePrimary" value="" required>
                   <p id="priceRangeSelected"></P>
                 </div>
               </div>

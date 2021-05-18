@@ -1,4 +1,3 @@
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +15,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="Homepage.html">LOGO</a>
+      <a class="navbar-brand" href="/">LOGO</a>
       <div class="navbar justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item dropdown">
@@ -25,7 +24,7 @@
               <!-- Add dynamic user here -->
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="profile.html">Account Info</a></li>
+              <li><a class="dropdown-item" href="/profile">Account Info</a></li>
               <li><a class="dropdown-item" href="#">Modify Reservation</a></li>
               <li><a class="dropdown-item" href="#">Recent Searches</a></li>
               <li><a class="dropdown-item" href="#">Contact Us</a></li>
@@ -42,12 +41,45 @@
     </div>
   </nav>
   
-  <div class="container mt-5 content"><!-- CONTENT --></div>
-
-  
-  <%= car[0].type %>
-  <img src="<%= car[0].image %>" alt="">
-  
+  <div class="container mt-5 content">
+    <div class="btn_main">
+      <a href="javascript:history.go(-1)" class="previous">&laquo;Go Back</a>
+    </div>
+    <div class="row" id="image_gallery">
+      <div class="col-lg-8 gallery_row">
+        <!-- APPEND IMAGE -->
+        <img src="<%= car[0].image%>" alt=""> 
+      </div>
+      <div class="col-lg-2 col-md-12 side_bar_img">
+        <div class="col">
+          <img src="" class="gallery_side_img" id="img1">
+        </div>
+        <div class="col">
+          <img src="" class="gallery_side_img" id="img2">
+        </div>
+        <div class="col">
+          <img src="" class="gallery_side_img" id="img3">
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row mt-5 detail_row">
+      <div class="col-lg-8 detail_field">
+        <!-- TITLE -->
+        <h5 id="title"></h5>
+        <hr>
+        <h5>Description</h5>
+        <!-- DESCRIPTION -->
+        <p id="description"></p>
+        <hr>
+        <h5>Specification</h5>
+        <ul id="specs">
+        </ul>
+        <hr>
+      </div>
+      <div class="col-lg-4 detail_field"></div>
+    </div>
+  </div>
 
   <!-- The Modal -->
   <div id="myModal" class="modal">
@@ -115,168 +147,26 @@
     const content = document.querySelector('.content');
 
     $(document).ready(function() {
-      //LOAD CONTENT
-      content.innerHTML = "";
       let img_source = sessionStorage.getItem("img");
       let detail_title = sessionStorage.getItem("detail_title");
       let detail_specs = JSON.parse(sessionStorage.getItem("detail_specs"));
 
-      let prev = document.createElement('div');
-      prev.classList.add('btn_main');
-
-      let prev_btn = document.createElement('a');
-      prev_btn.setAttribute("href", "javascript:history.go(-1)");
-      prev_btn.classList.add('previous');
-      prev_btn.innerHTML = "&laquo;Go Back";
-
-      let row = document.createElement('div');
-      row.classList.add('row');
-      row.id = "img_gallery";
-
-      let col0 = document.createElement('div');
-      col0.classList.add('col-lg-9', 'gallery_row');
-      
-      //Main img
-      let img0 = document.createElement('img');
-      img0.classList.add('gallery_img');
-      img0.id = 'img0';
-      img0.src = img_source;
-      img0.addEventListener("click", function(){
-        zoom('img0');
-      });
-      //Side img
-      let col = document.createElement('div');
-      col.classList.add('col-lg-2', 'col-md-12','side_bar_img');
-      for (let i = 0; i < 3; i++) {
-        let img_col = document.createElement('div');
-        img_col.classList.add('col');
-
-        let side_img = document.createElement('img');
-        side_img.classList.add('gallery_side_img');
-        side_img.id = 'img' + (i + 1);
-        side_img.src = img_source;
-        side_img.addEventListener("click", function() {
-          zoom('img'+(i+1));
-        });
-
-        img_col.appendChild(side_img);
-        col.appendChild(img_col);
+      $("#img0").attr("src", img_source);
+      for (let i=0; i < 3; i++) {
+        $("#img" + (i + 1)).attr("src", img_source);
       }
+      $("img").click(function() {
+        zoom(this.id);
+      });
 
-      let spacer = document.createElement('div');
-      spacer.classList.add('col');
-      //details
-      let detail_row = document.createElement('div');
-      detail_row.classList.add('row', 'mt-5', 'detail_row');
-
-      let detail_col = document.createElement('div');
-      detail_col.classList.add('col-lg-8', 'detail_field');
-
-      let hr = document.createElement('hr');
-      let hr0 = document.createElement('hr');
-      let hr1 = document.createElement('hr');
-
-      let title = document.createElement('h5');
-      title.innerText = detail_title;
-
-      let desc = document.createElement('h5');
-      desc.innerText = "Description";
-      let desc_p = document.createElement('p');
-      desc_p.innerText = "You can add here your description.";
-
-      let specs = document.createElement('h5');
-      specs.innerText = "Specification";
-
-      let spec_ul = document.createElement('ul');
+      $("#title").text(detail_title);
+      $("#description").text("You can add here your description.");
 
       for (let j = 0; j < detail_specs.length; j++) {
         let spec_li = document.createElement('li');
         spec_li.innerText = detail_specs[j];
-        spec_ul.appendChild(spec_li);
+        $("#specs").append(spec_li);
       }
-      //side detail One
-      let reserve_col = document.createElement('div');
-      reserve_col.classList.add('col-lg-4', 'detail_field');
-
-      let reserve_h5 = document.createElement('h5');
-      reserve_h5.innerText = "Make Reservation";
-
-      let pud_formGroup = document.createElement('div');
-      pud_formGroup.classList.add('form-group', 'row');
-
-      let reserve_label = document.createElement('label');
-      reserve_label.setAttribute("for", "reserve_pickup_date");
-      reserve_label.classList.add('col-12', 'mt-2');
-      reserve_label.innerText = "Pick-up date*";
-
-      let pud_input_col = document.createElement('div');
-      pud_input_col.classList.add('col-12');
-
-      let pud_input = document.createElement('input');
-      pud_input.classList.add('form-control');
-      pud_input.setAttribute("type", "date");
-      pud_input.id = "reserve_pickup_date";
-
-      //side detail Two
-      let pud_formGroup0 = document.createElement('div');
-      pud_formGroup0.classList.add('form-group', 'row');
-
-      let reserve_label0 = document.createElement('label');
-      reserve_label0.setAttribute("for", "reserve_return");
-      reserve_label0.classList.add('col-12', 'mt-2');
-      reserve_label0.innerText = "Retrun date*";
-
-      let pud_input_col0 = document.createElement('div');
-      pud_input_col0.classList.add('col-12');
-
-      let pud_input0 = document.createElement('input');
-      pud_input0.classList.add('form-control');
-      pud_input0.setAttribute("type", "date");
-      pud_input0.id = "reserve_return";
-      //button
-      let btn_wrap = document.createElement('div');
-      btn_wrap.classList.add('btn_main');
-
-      let btn_a = document.createElement('a');
-      btn_a.classList.add('btn', 'button');
-      btn_a.innerText = "Make Reservation";
-
-      //prev
-      prev.appendChild(prev_btn);
-      //img
-      col0.appendChild(img0);
-      row.appendChild(col0);
-      row.appendChild(col);
-      row.appendChild(spacer);
-      //details
-      detail_col.appendChild(title);
-      detail_col.append(hr);
-      detail_col.appendChild(desc);
-      detail_col.appendChild(desc_p);
-      detail_col.appendChild(hr0);
-      detail_col.appendChild(specs);
-      detail_col.appendChild(spec_ul)
-      detail_col.append(hr1);
-      detail_row.appendChild(detail_col);
-      //side detail one
-      reserve_col.appendChild(reserve_h5);
-      reserve_col.appendChild(pud_formGroup);
-      pud_formGroup.appendChild(reserve_label);
-      pud_formGroup.appendChild(pud_input_col);
-      pud_input_col.appendChild(pud_input);
-      //side detail two
-      reserve_col.appendChild(pud_formGroup0);
-      pud_formGroup0.appendChild(reserve_label0);
-      pud_formGroup0.appendChild(pud_input_col0);
-      pud_input_col0.appendChild(pud_input0);
-      //button
-      btn_wrap.appendChild(btn_a);
-      
-      content.appendChild(prev);
-      content.appendChild(row);
-      content.appendChild(detail_row);
-      detail_row.appendChild(reserve_col);
-      content.appendChild(btn_wrap);
 
     });
 

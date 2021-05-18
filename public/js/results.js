@@ -15,26 +15,6 @@ let list_items = [
     rate: 4,
     id: 0
   },
-  { 
-    title: 'Economic',
-    type: 'economic',
-    desc: 'You can add here your description',
-    price: 1550,
-    feature: ['Petrol', 'Luggages: 3', 'Seats: 4', 'Gear: Manual', 'Clima'],
-    img_url: 'https://s3.amazonaws.com/planyo/53322_167013_223963_R.jpg',
-    rate: 4,    
-    id: 1
-  },
-  {
-    title: 'Economic',
-    type: 'economic',
-    desc: 'You can add here your description',
-    price: 1550,
-    feature: ['Petrol', 'Luggages: 3', 'Seats: 4', 'Gear: Manual', 'Clima'],
-    img_url: 'https://s3.amazonaws.com/planyo/53322_167013_223963_R.jpg',
-    rate: 4,
-    id: 1
-  },
   {
     title: 'Economic',
     type: 'economic',
@@ -54,16 +34,6 @@ let list_items = [
     img_url: 'https://s3.amazonaws.com/planyo/53322_167013_223963_R.jpg',
     rate: 4,
     id: 2
-  },
-  {
-    title: 'Economic',
-    type: 'economic',
-    desc: 'NEW CAR',
-    price: 2000,
-    feature: ['Petrol', 'Luggages: 3', 'Seats: 4', 'Gear: Manual', 'Clima'],
-    img_url: 'https://s3.amazonaws.com/planyo/53322_167013_223963_R.jpg',
-    rate: 4,
-    id: 7
   },
   {
     title: 'Family',
@@ -149,6 +119,7 @@ $(document).ready(function() {
     displayList(list_items, filters);
   });
 
+
   function sort_array_by (array, sort, desc) {
   array.sort(function (a,b) {
     if (a[sort] < b[sort]) return -1;
@@ -168,6 +139,7 @@ function displayList(array = [], filters) {
     let item = array[i];
 
     if(item.type == filters.car_type.toLowerCase() && (item.price >= filters.min_price || item.price <= filters.max_price)) {
+    
     let card_col = document.createElement('div');
     card_col.classList.add('col-lg-4', 'col-md-6');
     card_col.id = item.id;
@@ -210,16 +182,18 @@ function displayList(array = [], filters) {
 
     let btn1 = document.createElement('a');
     btn1.classList.add('car-link');
-    btn1.href = "/view_car/: {{item:id}}";
+    btn1.href = "#";
     btn1.innerText = 'Details';
     btn1.addEventListener("click", function(){
        view_detail(item.id);
     });
     let btn2 = document.createElement('a');
     btn2.classList.add('car-link');
-    btn2.href = "/booking";
+    btn2.href = "#";
     btn2.innerText = 'Make Reservation';
-
+    btn2.addEventListener("click", function() {
+      make_reservation(item.id);
+    })
 
     card_col.appendChild(card);
     card.appendChild(img);
@@ -233,9 +207,7 @@ function displayList(array = [], filters) {
     list.appendChild(card_col);
     }
   }
-}
-
-
+};
 
 //VIEW DETAIL
 function view_detail(detail_id) {
@@ -244,5 +216,8 @@ function view_detail(detail_id) {
   sessionStorage.setItem("detail_specs", JSON.stringify(list_items[detail_id].feature));
 
   window.location.href="detail.html";
+};
+RESERVATION
+function make_reservation(offer_id) {
+  window.location.href="reserve.html";
 }
-//BREAKPOINT

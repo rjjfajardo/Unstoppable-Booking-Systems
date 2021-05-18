@@ -13,6 +13,7 @@ const indexController = require('../controller/indexController')
 // const profile = require('../controller/profileController.js');
 
 const profileController = require('../controller/profileController')
+const profile = require('../controller/accountProfileController')
 const searchResults = require("../controller/searchResults")
 
 const viewCarDetailsController = require('../controller/viewCar')
@@ -23,6 +24,7 @@ const reserveController = require('../controller/reservationController')
 const auth = require('../validation/authValidation')
 const passport = require('passport')
 const initPassportLocal = require('../controller/passportController')
+const reservationController = require('../controller/reservationController')
 
 // Init all passport
 initPassportLocal();
@@ -31,6 +33,8 @@ let router = express.Router();
 
 let initWebRoutes = (app) => {
     
+
+    // authentication 
     router.get("/", loginController.checkLoggedIn, homePageController.handleHelloWorld);
     router.get("/login",loginController.checkLoggedOut, loginController.getPageLogin);
     router.post("/login", passport.authenticate("local", {
@@ -47,12 +51,22 @@ let initWebRoutes = (app) => {
     
     router.get("/welcome", indexController.getPageIndex);
     router.get("/about", indexController.getAboutPage);
+
+    //search query_module
     router.get("/search_results", searchResults.getSearchResults);
+
+    
+    //reservation_module
     router.get("/booking/:car_id", reserveController.getReservationPage)
+    router.post("/", reserveController.createBookings)
+
+
+    //car_details_module
     router.get("/view_car/:car_id", viewCarDetailsController.viewCarDetails)
     
-    
+    //profile_module
     router.get("/profile", profileController.viewAccountProfile);
+    router.get("/profile/mybookings", profile.getReservationTable)
 
 
     // router.get("/profile/:id", profileController.editProfile);

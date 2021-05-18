@@ -6,18 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="//unpkg.com/bootstrap-select-country@4.0.0/dist/js/bootstrap-select-country.min.js"></script>
-
   <title>Reservation</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="Homepage.html">LOGO</a>
+      <a class="navbar-brand" href="/">LOGO</a>
       <div class="navbar justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item dropdown">
@@ -44,119 +45,325 @@
   </nav>
 
   <div class="container" id="reserve_wrapper">
+
+  <!-- Modal -->
+    <!-- <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Terms and Conditions</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      
+    </div> -->
+
+    <div class="modal fade" id="myModal" role="dialog">
+
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Terms and Conditions</h3>
+          </div>
+          <div class="modal-body">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut consectetur ipsa quidem mollitia sint sequi, quam nemo ratione dignissimos sapiente eaque labore commodi, nam dolorem odio, cupiditate dolor neque iste?
+              Labore quos aspernatur saepe impedit culpa laboriosam delectus consequuntur dolor totam porro? Atque labore architecto placeat illo aut quasi officia, nostrum nisi tempora veniam voluptatibus sunt minus inventore velit laudantium.
+              Provident ab laudantium sint voluptate, ea ullam officia nam voluptatibus nulla, animi ipsa obcaecati est voluptatem impedit at sed nostrum consectetur reiciendis labore. Expedita, inventore ipsum laborum ducimus enim mollitia?
+              Ratione, recusandae illo eligendi iste maiores dolorum odit corrupti quod veritatis mollitia neque fugit deserunt? Maiores similique deleniti iusto itaque et totam doloremque fugiat sunt, incidunt ipsa possimus id illum!
+              Corporis quia corrupti incidunt iusto blanditiis deserunt, reiciendis vero quisquam at excepturi. Exercitationem, consequatur. Illum hic doloribus quasi ab? Cum, ipsa? Dicta vero aliquid, incidunt magnam deserunt impedit reprehenderit hic!
+              Delectus ducimus magni harum dolorum pariatur nihil aut eveniet reprehenderit atque laboriosam quod ipsam sed non at voluptate omnis tempora rerum natus quasi tenetur, facilis amet! Amet blanditiis veritatis asperiores?
+              Voluptate, velit eius? Ducimus labore assumenda doloremque quisquam minima deserunt temporibus officiis eligendi, praesentium minus! Neque, eos dignissimos, quisquam labore omnis delectus consequatur harum in adipisci, illum quidem voluptas maiores!
+              Voluptatibus suscipit minima quia expedita quibusdam, voluptas tenetur dolorem, rerum adipisci placeat assumenda laboriosam recusandae aliquam eaque rem officiis dolorum accusamus enim. Non debitis, dolorem tempore ad excepturi voluptate commodi!</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
     <!-- STEPS -->
     <div class="step-row">  
-      <div class="col steps">
-        <div class="step-col active_step">1</div>
+      <div class="col steps active_step" id="step1">
+        <div class="step-col step">1</div>
         <p>Reservation detail</p>
       </div>
-      <div class="col steps">
-        <div class="step-col">2</div>
+      <div class="col steps" id="step2">
+        <div class="step-col step">2</div>
         <p class="text-muted">Additional Products</p>
       </div>
-      <div class="col steps">
-        <div class="step-col">3</div>
+      <div class="col steps" id="step3">
+        <div class="step-col step">3</div>
         <p class="text-muted">Payment</p>
       </div>
-      <div class="col steps">
-        <div class="step-col">4</div>
+      <div class="col steps" id="step4">
+        <div class="step-col step">4</div>
         <p class="text-muted">Reserved completed</p>
       </div>
     </div>
-    <!-- FORM ONE -->
-    <form id="form1">
-      <div class="row">
-        <div class="col-lg-8 data_col">
-          <div class="row reserve_row">
-            <div class="col-lg-6">
-              <label for="reserve_pick_up_date" class="col-2 col-form-label">Pick-up date*</label>
-              <input class="form-control" type="date" value="2021-05-12" id="reserve_pick_up_date">
-            </div>
-            <div class="col-lg-6">
-              <label for="reserve_return_date" class="col-2 col-form-label">Return date*</label>
-              <input class="form-control" type="date" value="2021-05-14" id="reserve_return_date">
-            </div>
-            <div class="col-lg-6">
-              <label for="reserve_first_name" class="col-2 col-form-label">First name*</label>
-              <input class="form-control" type="text" value="John" id="reserve_first_name">
-            </div>
-            <div class="col-lg-6">
-              <label for="reserve_last_name" class="col-2 col-form-label">Last name</label>
-              <input class="form-control" type="text" value="Doe" id="reserve_last_name">
-            </div>
-            <div class="col-lg-6">
-              <label for="reserve_address" class="col-2 col-form-label">Address</label>
-              <input class="form-control" type="text" id="reserve_address">
-            </div>
-            <div class="col-lg-6">  
-              <label for="reserve_country" class="col-2 col-form-label">Country</label>
-              <select class="selectpicker countrypicker form-control" id="reserve_country"></select>
-            </div>
-            <div class="col-lg-6">
-              <label for="reserve_email" class="col-2 col-form-label">Email address*</label>
-              <input class="form-control" type="email" id="reserve_email">
-            </div>
-            <div class="col-lg-6">
-              <label for="reserve_mobile" class="col-2 col-form-label">Mobile</label>
-              <input class="form-control" type="tel" id="reserve_mobile">
-            </div>
-            <div class="col-lg-12">
-              <label for="reserve_notes" class="col-2 col-form-label">Notes</label>
-              <textarea class="form-control" id="reserve_notes" cols="30" rows="6"></textarea>
-              <p class="text-muted">Enter additional notes here.</p>
-            </div>
-            <div class="col-lg-12">
-              <label for="reserve_notes" class="col-2 col-form-label">Terms and conditions</label>
-              <textarea class="form-control" id="reserve_notes" placeholder="You can add your terms and conditions/agreement " cols="30" rows="1"></textarea>
-            </div>
-            <div class="col-lg-12">
-              <label class="custom-control custom-checkbox mt-4">
-                <input type="checkbox" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">I agree with the above terms and conditions*</span>
-              </label>
-            </div>
-            <div class="col-lg-12">
-              <div class="btn_main mt-5">
-                <a class="car-link" href="#" onclick="">Continue</a>
+    
+
+    <form action="/ " method="post" >
+      <!-- FORM ONE -->
+      <div id="form1">
+        <div class="row">
+          <div class="col-lg-8 data_col">
+            
+            <div class="row reserve_row">
+              <div class="col-lg-6">
+                
+                <!-- Vehicle ID and USER ID -->
+                <input class="form-control" type="hidden" name="car_id" value="<%= car[0].id %>" id="car_id"> 
+                <input class="form-control" type="hidden" name="car_id" value="<%= user[0].id %>" id="user_id"> 
+
+
+                <label for="reserve_pick_up_date" class="col-2 col-form-label">Pick-up date*</label>
+                <input class="form-control" type="date" value="" name="reserve_pick_up_date" id="reserve_pick_up_date" required>
+              </div>
+              <div class="col-lg-6">
+                <label for="reserve_return_date" class="col-2 col-form-label">Return date*</label>
+                <input class="form-control" type="date" value="" name="reserve_return_date" id="reserve_return_date" required>
+              </div>
+              <div class="col-lg-6">
+                <label for="reserve_first_name" class="col-2 col-form-label">Number of Days Rent *</label>
+                <input class="form-control" type="text" value="" name="no_of_days" id="no_of_days" required>
+              </div>
+              <div class="col-lg-6">
+                <label for="reserve_first_name" class="col-2 col-form-label">Rent Type *</label>
+                <select class="form-control" type="" value="" name="rent_type" id="rent_type" required>
+                <option value="Daily">Daily</option>
+                <option value="Monthly">Monthly</option>
+                </select>
+              </div>
+              <div class="col-lg-12">
+                <label for="reserve_notes" class="col-2 col-form-label">Notes</label>
+                <textarea class="form-control" name="reserve_notes" id="reserve_notes" cols="30" rows="6"></textarea>
+                <p class="text-muted">Enter additional notes here.</p>
+              </div>
+              <div class="col-lg-12">
+                <label class="custom-control custom-checkbox mt-4">
+                  <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">I agree with the above terms and conditions*</span>
+                </label>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col price_col">
-          <div class="rate_wrap">
-            <h5>Your rate</h5>
-            <div class="d-flex justify-content-between">
-              <div class="prices">
-                <p>Economic</p>
-                <p class="text-muted"><small>PHP 90.00 per day</small></p>
+          <div class="col price_col">
+            <div class="rate_wrap">
+              <h5>Your rate</h5>
+              <div class="d-flex justify-content-between">
+                <div class="prices">
+                  <p>Daily Rate</p>
+                  
+                </div>
+                <p>PHP <%= car[0].price_per_day %></p>
               </div>
-              <p>PHP 90.00</p>
+              <div class="d-flex justify-content-between mt-3">
+                <p>Total</p>
+                <p>PHP 90.00</p>
+              </div>
             </div>
-            <div class="d-flex justify-content-between mt-3">
-              <p>Total</p>
-              <p>PHP 90.00</p>
+          </div>
+          <div class="col-lg-12">
+            <div class="c_btn_large mt-5">
+              <button class="btn" type="submit" >Continue</button>
             </div>
+          </form>
           </div>
         </div>
       </div>
-    </form>
-    <!-- FORM TWO -->
-    <form id="form2">
+      <!-- FORM TWO -->
+      <!-- <div class="hide" id="form2">
+        <div class="row">
+          <div class="col-lg-8">
+            <table class="table mt-3">
+              <thead>
+                <tr>
+                  <th scope="col">Product name</th>
+                  <th scope="col">Unit price</th>
+                  <th scope="col">Qty</th>
+                  <th scope="col">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Additional driver</th>
+                  <td>PHP 100.00</td>
+                  <td>0</td>
+                  <td>PHP 0.00</td>
+                  <td>
+                    <div class="c_btn_main">
+                      <button class="btn">Add</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Child safety seat</th>
+                  <td>PHP 50.00</td>
+                  <td>0</td>
+                  <td>PHP 0.00</td>
+                  <td>
+                    <div class="btn-group c_btn_main" role="group" aria-label="Basic example">
+                      <button type="button" class="btn">-</button>
+                      <button type="button" class="btn">+</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">GPS device</th>
+                  <td>PHP 100.00</td>
+                  <td>0</td>
+                  <td>PHP 0.00</td>
+                  <td>
+                    <div class="c_btn_main">
+                      <button class="btn">Add</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col price_col">
+            <div class="rate_wrap">
+              <h5>Your rate</h5>
+              <div class="d-flex justify-content-between">
+                <div class="prices">
+                  <p>Economic</p>
+                  <p class="text-muted"><small>PHP 90.00 per day</small></p>
+                </div>
+                <p>PHP 90.00</p>
+              </div>
+              <div class="d-flex justify-content-between mt-3">
+                <p>Total</p>
+                <p>PHP 90.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="c_btn_large mt-5">
+              <button class="btn" id="btn_step2">Make reservation</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- FORM THREE -->
+      <!-- <div class="hide" id="form3">
+        <p>Status:</p>
+        <p>In order to complete your reservation, you will need to make an online payment. Click the button below to go to a secure payment site.</p>
+        <p><strong>YOUR RESERVATION WILL NOT BE VALID WITHOUT THE PAYMENT!</strong></p>
+        <div class="d-flex payment">
+          <div class="c_btn_large mt-5">
+            <a class="btn" href="#" id="btn_step3" onclick="payNow()">Pay now</a>
+          </div>
+          <img src="visa.png" alt="Visa Card">
+        </div>
+        <br>
+        <p><strong>Reservation details</strong></p>
+        <div class="w-50">
+          <div class="d-flex justify-content-between">
+            <p>Reservation ID</p>
+            <p>R9088076</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Car</p>
+            <p>Economic</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Number of cars</p>
+            <p>1</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Duration</p>
+            <div>
+              <p>Wednesday, 2021-05-12 - </p>
+              <p>Wednesday, 2021-05-19 (8 days)</p>
+            </div>
+           
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Created</p>
+            <p>2021-05-12 09:08</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Status</p>
+            <p>Not completed</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Price</p>
+            <p>CHF 240.00</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Payments</p>
+            <p>-</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Terms and conditions</p>
+            <p>Accepted</p>
+          </div>
+        </div>
+  
+      </div>
+      <div class="hide" id="form4">
+        <p>Your reservation ID is R9088076</p>
+        <p>Your reservation is now confirmed.</p>
+        <div class="w-50">
+          <div class="d-flex justify-content-between">
+            <p>Reservation ID</p>
+            <p>R9088076</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Car</p>
+            <p>Economic</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Number of cars</p>
+            <p>1</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Duration</p>
+            <div>
+              <p>Wednesday, 2021-05-12 - </p>
+              <p>Wednesday, 2021-05-19 (8 days)</p>
+            </div>
+           
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Created</p>
+            <p>2021-05-12 09:08</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Status</p>
+            <p>Not completed</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Price</p>
+            <p>CHF 240.00</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Payments</p>
+            <p>-</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Terms and conditions</p>
+            <p>Accepted</p>
+          </div>
+          <div class="c_btn_large mt-5">
+            <a href="Homepage.html">Go back to home</a>
+          </div>
+        </div>
+      </div>
+    </form> -->
 
-    </form>
-
-    <form id="form3">
-
-    </form>
-    <form id="form4">
-
-    </form>
-    
     
 
   </div>
-
+  <br><br><br>
   <footer id="footer">
     <div class="footer__wrapper">
         <div class="row pb-5 mb-5">
@@ -212,10 +419,108 @@
         <p class="text-muted">© Copyright 2021, Unstoppable Car Rentals</p>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
   <script>
-    $('.countrypicker').countrypicker();
+    
+    $(document).ready(function() {
+      var add_safety = 0;
+      var add_driver = 0;
+      var add_gps = 0;
+      var daily_rate = 90;
+      var total = daily_rate;
+      $('#myModal').modal('show');
+      $("#btn_step1").click(function() {
+        $("#step1").removeClass("active_step");
+        $("#step1").find("p").addClass("text-muted");
+        $("#form1").addClass("hide");
+        $("#form2").removeClass("hide");
+        $("#step2").addClass("active_step");
+        $("#step2").find("p").removeClass("text-muted");
+      });
+      $("#btn_step2").click(function() {
+        $("#step2").removeClass("active_step");
+        $("#step2").find("p").addClass("text-muted");
+        $("#form2").addClass("hide");
+        $("#form3").removeClass("hide");
+        $("#step3").addClass("active_step");
+        $("#step3").find("p").removeClass("text-muted");
+      });
+      $("#btn_step3").click(function() {
+        $("#step3").removeClass("active_step");
+        $("#step3").find("p").addClass("text-muted");
+        $("#form3").addClass("hide");
+        $("#form4").removeClass("hide");
+        $("#step4").addClass("active_step");
+        $("#step4").find("p").removeClass("text-muted");
+      });
+      $("#add_driver").click(function() {
+        add_driver++;
+        $("#add_driver_qty").text(add_driver);
+        $("#add_driver_sub").text("PHP "+ add_driver*100+".00");
+        $("#add_driver_wrap").addClass("hide");
+        $("#remove_driver_wrap").removeClass("hide");
+        total+= parseInt(add_driver*100);
+        $("#total_rate").text("PHP "+ total + ".00");
+      });
+      $("#remove_driver").click(function() {
+        total -= parseInt(add_driver*100);
+        $("#total_rate").text("PHP "+ total + ".00");
+        add_driver--;
+        $("#add_driver_qty").text(add_driver);
+        $("#add_driver_sub").text("PHP "+ add_driver*100+".00");
+        $("#add_driver_wrap").removeClass("hide");
+        $("#remove_driver_wrap").addClass("hide");
+      });
+      $("#add_gps").click(function() {
+        add_gps++;
+        $("#add_gps_qty").text(add_gps);
+        $("#add_gps_sub").text("PHP "+ add_gps*100+".00");
+        $("#add_gps_wrap").addClass("hide");
+        $("#remove_gps_wrap").removeClass("hide");
+        total+= parseInt(add_gps*100);
+        $("#total_rate").text("PHP "+ total + ".00");
+      });
+      $("#remove_gps").click(function() {
+        total -= parseInt(add_gps*100);
+        $("#total_rate").text("PHP "+ total + ".00");
+        add_gps--;
+        $("#add_gps_qty").text(add_gps);
+        $("#add_gps_sub").text("PHP "+ add_gps*100+".00");
+        $("#add_gps_wrap").removeClass("hide");
+        $("#remove_gps_wrap").addClass("hide");
+      });
+      $("#add_safety").click(function() {
+        if(add_safety != 2) {
+          add_safety++;
+          $("#add_safety_qty").text(add_safety);
+          $("#add_safety_sub").text("PHP "+add_safety*50+".00");
+          total += parseInt(add_safety*50);
+          $("#total_rate").text("PHP "+ total + ".00");
+        }
+      });
+      $("#remove_safety").click(function() {
+        if(add_safety != 0) {
+          total -= parseInt(add_safety*50);
+          $("#total_rate").text("PHP "+ total + ".00");
+          add_safety--;
+          $("#add_safety_qty").text(add_safety);
+          $("#add_safety_sub").text("PHP "+add_safety*50+".00");
+        }
+      });
+    });
+
+    function payNow() {
+      window.open("payment.html", '_blank');
+    };
+
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+      
+    })
+    
   </script>
 </body>
 </html>
