@@ -1,8 +1,22 @@
 let connection = require('../config/connectionDB')
 
 let getAccountProfile = async (req, res) => {
-    return res.render("accountProfile.ejs", {
-        user: req.user
+
+//     connection.query("SELECT * FROM bookings_tbl WHERE id = ? ", req.user.id, (req, bookings) => {
+//     return res.render("accountProfile.ejs", { user: req.user, bookings : bookings}
+//         })
+//     })
+// };
+    connection.query("SELECT * FROM users WHERE id = ?", req.user.id, (err, row, field) => { var user = row;
+
+
+        //TO BE VALIDATED
+        
+        connection.query("SELECT user_id, vehicle_brand_model, rent_startDate, rent_endDate, bookings_tbl.status FROM bookings_tbl INNER JOIN cars ON bookings_tbl.vehicle_id = cars.id INNER JOIN users ON bookings_tbl.user_id = users.id", (err, row, field) => { 
+            var bookings = row
+        //    res.render("accountProfile.ejs", {user : user, bookings : bookings })
+        console.log(bookings)
+        })
     })
 };
 

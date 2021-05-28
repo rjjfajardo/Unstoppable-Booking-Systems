@@ -4,27 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="/css/style.css">
-  
+   
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+
+  
   <title>Reservation</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">LOGO</a>
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" style="width: 100px;"alt=""></a>
       <div class="navbar justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Hi!, User
-              <!-- Add dynamic user here -->
+              <i class="fas fa-user-circle" style="font-size: 30px; color: orange;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="profile.html">Account Info</a></li>
@@ -43,6 +47,7 @@
       </div>
     </div>
   </nav>
+
 
   <div class="container" id="reserve_wrapper">
 
@@ -86,7 +91,6 @@
       </div>
     </div>
 
-
     <!-- STEPS -->
     <div class="step-row">  
       <div class="col steps active_step" id="step1">
@@ -108,7 +112,7 @@
     </div>
     
 
-    <form action="/ " method="post" >
+    <form action="/booking/<%= car[0].id %>" method="post" >
       <!-- FORM ONE -->
       <div id="form1">
         <div class="row">
@@ -118,16 +122,20 @@
               <div class="col-lg-6">
                 
                 <!-- Vehicle ID and USER ID -->
-                <input class="form-control" type="hidden" name="car_id" value="<%= car[0].id %>" id="car_id"> 
-                <input class="form-control" type="hidden" name="car_id" value="<%= user[0].id %>" id="user_id"> 
+                <input class="form-control" type="text" name="car_id" value="<%= car[0].id %>" id="car_id"> 
+                <input class="form-control" type="text" name="user_id" value="<%= user[0].id %>" id="user_id"> 
 
-
+               
+                
                 <label for="reserve_pick_up_date" class="col-2 col-form-label">Pick-up date*</label>
-                <input class="form-control" type="date" value="" name="reserve_pick_up_date" id="reserve_pick_up_date" required>
-              </div>
+                <!-- <input class="form-control datepicker" type="date" value="" name="reserve_pick_up_date" id="reserve_pick_up_date" required> -->
+                <input class="form-control date "  type="date" value="" name="reserve_pick_up_date" id="reserve_pick_up_date" required>
+                
+              </div>  
+              
               <div class="col-lg-6">
                 <label for="reserve_return_date" class="col-2 col-form-label">Return date*</label>
-                <input class="form-control" type="date" value="" name="reserve_return_date" id="reserve_return_date" required>
+                <input class="form-control "    type="date" value="" name="reserve_return_date" id="reserve_return_date" required>
               </div>
               <div class="col-lg-6">
                 <label for="reserve_first_name" class="col-2 col-form-label">Number of Days Rent *</label>
@@ -172,14 +180,13 @@
           </div>
           <div class="col-lg-12">
             <div class="c_btn_large mt-5">
-              <button class="btn" type="submit" >Continue</button>
+              <button class="btn"  id="btn_step1">Continue</button>
             </div>
-          </form>
           </div>
-        </div>
-      </div>
+        
+         
       <!-- FORM TWO -->
-      <!-- <div class="hide" id="form2">
+       <div class="hide" id="form2">
         <div class="row">
           <div class="col-lg-8">
             <table class="table mt-3">
@@ -247,11 +254,16 @@
           </div>
           <div class="col-lg-12">
             <div class="c_btn_large mt-5">
-              <button class="btn" id="btn_step2">Make reservation</button>
+              <button class="btn" type="submit" id="btn_step2">Make reservation</button>
             </div>
           </div>
+        </form>
+        
+      
+    </div>
+  </div>
         </div>
-      </div> -->
+      </div> 
       <!-- FORM THREE -->
       <!-- <div class="hide" id="form3">
         <p>Status:</p>
@@ -358,12 +370,12 @@
           </div>
         </div>
       </div>
-    </form> -->
-
-    
-
+    </form> 
+  -->
   </div>
   <br><br><br>
+
+  
   <footer id="footer">
     <div class="footer__wrapper">
         <div class="row pb-5 mb-5">
@@ -421,8 +433,30 @@
   </footer>
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  <script>
-    
+  <script src="/js/calendar.js"></script>
+  <!-- <script type="text/javascript"> -->
+    <script>
+      var data = [];
+      var i = 0;
+  </script>
+  
+
+   <!-- loop thru the booking sched and then put it in an array then pass to the caledar  -->
+
+  <% car.forEach(function(cars){ %>
+    <script>
+
+         data[i]  = '<%= cars.rent_startDate %>'
+          i++;
+        
+    </script>
+   
+    <% }) %>
+
+
+<script type="text/javascript">
+
+  
     $(document).ready(function() {
       var add_safety = 0;
       var add_driver = 0;
@@ -518,9 +552,24 @@
     var myInput = document.getElementById('myInput')
 
     myModal.addEventListener('shown.bs.modal', function () {
-      
-    })
+
+    })  
+
     
+    var disableDates = ["16-5-2021", "14-5-2021", "15-5-2021","9-5-2021"];
+      $('.datepicker').datepicker({
+          format: 'yyyy-dd-mm',
+          beforeShowDay: function(date){
+              dmy = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+              if(disableDates.indexOf(dmy) != -1){
+                  return false;
+              }
+              else{
+                  return true;
+              }
+          }
+      });
+
   </script>
 </body>
 </html>

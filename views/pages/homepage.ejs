@@ -10,20 +10,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-  <title>Homepage</title>
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+  <title>Unstoppable Car Rental</title>
 </head>
 <body>
   <div class="wrapper">
     <div class="header" style="position: relative;">
       <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">LOGO</a>
+          <a class="navbar-brand" href="/"><img src="/images/logo.png" style="width: 100px;"alt=""></a>
           <div class="navbar justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav justify-content-end">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Welcome back, <%= user.fullname %>
+                  <i class="fas fa-user-circle" style="font-size: 30px; color: orange;"></i>
                   <!-- Add dynamic user here -->
+                 
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="/profile">Account Info</a></li>
@@ -47,6 +50,8 @@
         </div>
       </nav>
 
+
+      
      
       <div class="hero__">
         <form class="filter_form" method="GET" action="/search_results"  autocomplete="off">
@@ -86,6 +91,48 @@
         </svg>
       </div>
     </div>
+  </div>
+  <!-- EDITED PART -->
+  <div class="mt-5">
+    <h5 style="text-align: center; font-size: 30px;">Great Deals</h5>
+    <div class="d-flex p-5">
+      <div class="card" style="width: 18rem;">
+        <img src="/images/deal_one.jpg" class="card-img-top" alt="Deal_img">
+        <div class="card-body">
+          <h5>50% OFF</h5>
+          <div class="c_btn_main">
+            <button class="btn">View Deal</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="/images/car_index.png" class="card-img-top" alt="Deal_img">
+        <div class="card-body">
+          <h5>75% OFF</h5>
+          <div class="c_btn_main">
+            <button class="btn">View Deal</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="/images/car_index.png" class="card-img-top" alt="Deal_img">
+        <div class="card-body">
+          <h5>25% OFF</h5>
+          <div class="c_btn_main">
+            <button class="btn">View Deal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <div class="col p-5 m-5">
+      <p>Car renting made easy</p>
+      <h5>Rent a car with ease through Unstoppable Car Rentals</h5>
+      <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nobis, atque ipsam maiores non repudiandae nesciunt! Eos repellat doloribus dicta cum omnis maiores, at fuga delectus recusandae nemo nisi eligendi.</p>
+    </div>
+    <div class="col p-5 m-5" style="background-image: url('/images/img.jpg'); background-size: cover; background-repeat: no-repeat; min-height: 95vh; height: 100%;"></div>
   </div>
   
   <footer id="footer">

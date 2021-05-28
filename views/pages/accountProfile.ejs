@@ -6,20 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/profile.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+  
+  
+  <!-- DATATABLES -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
   <title>Profile</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">LOGO</a>
+      <a class="navbar-brand" href="/"><img src="/images/logo.png" style="width: 100px;"alt="">   </a>
       <div class="navbar justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Welcome, <%= user[0].fullname %>
+              <i class="fas fa-user-circle" style="font-size: 30px; color: orange;"></i>
               <!-- Add dynamic user here -->
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -31,7 +42,7 @@
               <li><hr class="dropdown-divider"></li>
               <li>
                 <form method="POST" action="/logout">
-                  <button type="submit" class="btn btn-primary">Log out</button>
+                  <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Log out</button>
               </form>
               </li>
             </ul>
@@ -75,6 +86,7 @@
                   <%= user[0].fullname %>
                   <p class="text-muted" id="user_name"></p>
                 </div>
+                
                 <!-- EDIT -->
                 <form autocomplete="off">
                   <div class="info_edit hide" id="name_info">
@@ -83,7 +95,6 @@
                       <div class="input-group flex-nowrap mb-1">
                         <input type="text" class="form-control" placeholder="" aria-label="first_name" aria-describedby="addon-wrapping" value="<%= user[0].fullname%>"id="first_name" required>
                       </div>
-                      
                     </div>
                   </div>
                 </form>
@@ -274,17 +285,124 @@
           </div>
         </div>
       </div>
+
+
+      <!-- BOOKINGS -->
       <div class="tab_panel">
-        <h3>BOOKINGS</h3>
+          <div class="bookings-tbl" style="border: 1px solid black; padding: 50px;">
+          <table id="myTable" class="display">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Vehicle</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Status</th>
+                   
+                    <th>Created Date</th>  
+                    <th>Action</th> 
+                </tr>
+            </thead>
+            <tbody>
+                
+              <% for(var i=0; i < bookings.length; i++) { %>
+                <tr>
+                  <td><%= bookings[i].user_id %></td>
+                  <td><%= bookings[i].vehicle_brand_model %></td>
+                  <td><%= bookings[i].rent_startDate %></td>
+                  <td><%= bookings[i].rent_endDate %></td>
+                  <td>
+                    <% if (bookings[i].status == 'success') { %>
+                      <span class="btn btn-success" style="text-transform: uppercase;"><%= bookings[i].status %></span>
+                      <%} else { %>
+                        <span class="btn btn-warning" style="text-transform: uppercase;"  ><%= bookings[i].status %></span>
+                      <% } %>   
+                  
+                  </td>
+                  <td>
+                    <%= bookings[i].createdAt %>
+                  </td>
+                  <td>
+                    <% if (bookings[i].status == 'success') { %>
+                      <span class="btn btn-danger disabled" style="text-transform: uppercase;">Cancel</i></span>
+                    
+                          
+                         
+                          <%} else { %>
+                            <span class="" style="text-transform: uppercase;">
+                              <form method="POST" action="/">
+                                <a class="btn btn-danger" data-toggle="modal" data-target="#exampleModal1">Cancel</i></a>
+                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Delete this booking  ?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        ...
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Yes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div> 
+                              </form>
+                        </span>
+                      <% } %>  
+                  </td>
+                </tr>
+            </tbody>
+            <% } %>
+        </table>
       </div>
-      
-      <div class="tab_panel">Content3</div>
-      <div class="tab_panel">Content4</div>
-      <div class="tab_panel">Content5</div>
+      </div>
+
+      <div class="tab_panel">Content4
+          <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+    </div>
+
+      <div class="tab_panel">Content5
+
+      </div>
     </div>
   </div>
   
+  <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+  </script>
+   
 
+   
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>

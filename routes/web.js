@@ -13,12 +13,13 @@ const indexController = require('../controller/indexController')
 // const profile = require('../controller/profileController.js');
 
 const profileController = require('../controller/profileController')
-const profile = require('../controller/accountProfileController')
+
 const searchResults = require("../controller/searchResults")
 
 const viewCarDetailsController = require('../controller/viewCar')
 const reserveController = require('../controller/reservationController')
 
+const paymentController = require('../controller/paymentController')
 
 
 const auth = require('../validation/authValidation')
@@ -38,7 +39,10 @@ let initWebRoutes = (app) => {
     router.get("/", loginController.checkLoggedIn, homePageController.handleHelloWorld);
     router.get("/login",loginController.checkLoggedOut, loginController.getPageLogin);
     router.post("/login", passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/",  
+
+          
+        
         failureRedirect: "/login",
         successFlash: true,
         failureFlash: true
@@ -58,15 +62,17 @@ let initWebRoutes = (app) => {
     
     //reservation_module
     router.get("/booking/:car_id", reserveController.getReservationPage)
-    router.post("/", reserveController.createBookings)
+
+    router.post("/booking/:car_id", reserveController.createBookings)
 
 
     //car_details_module
     router.get("/view_car/:car_id", viewCarDetailsController.viewCarDetails)
     
     //profile_module
-    router.get("/profile", profileController.viewAccountProfile);
-    router.get("/profile/mybookings", profile.getReservationTable)
+    router.get("/profile", profileController.viewAccountProfile)
+    router.post("/profile", profileController.editProfile)
+  
 
 
     // router.get("/profile/:id", profileController.editProfile);
@@ -77,10 +83,12 @@ let initWebRoutes = (app) => {
     // app.post('/profile/:id/changepassword',isLoggedinMW, profile.change)
 
 
-
+    //payment-module
+    router.get("/payment", paymentController.getPaymentPage)
 
 
     
     return app.use("/", router);
 };
 module.exports = initWebRoutes;
+    

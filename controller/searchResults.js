@@ -12,4 +12,4 @@ let getSearchResults = async (req, res) => {
 
 module.exports = {
     getSearchResults : getSearchResults
-}   
+}       
