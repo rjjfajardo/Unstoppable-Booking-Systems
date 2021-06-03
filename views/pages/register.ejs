@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <%- include('../partials/head'); %>
     <title>Register Page</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-<div class="container">
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-7 register-left">
+<body class="rs-body">
+
+    <div class="reg-wrap">
+        
+        <div class="row align-items-center reg-wrap">
+            <div class="col-md-5">
+                <div class="reg-form-img"></div>
             </div>
-            <div class="col-5 mt-2">
+            <div class="col-md-7 rs-form">
                 <div>
                     <% if(errors != "") { %>
                         <% errors.forEach((item) => { %>
@@ -54,8 +51,9 @@
                     <div>
                         <span>By signing up, you agree to our <b>Terms , Data Policy and <center>Cookies Policy.</b></center></span>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="btn-blue">
+                        <button type="submit" class="btn">Register</button>
+                    </div>
                 </form>
 
                 <hr>
@@ -67,14 +65,8 @@
             </div>
         </div>
     </div>
-</div>
-<br><br>
-<div class="wrapper">
 
-    <footer>
-        <%- include('../partials/footer'); %>
-    </footer>
-    
-</div>
+    <%- include('../partials/footer'); %>    
+
 </body>
 </html>

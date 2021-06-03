@@ -1,46 +1,6 @@
-
-
-
 const tab_buttons = document.querySelectorAll(".tab_container .button_container button");
 const tab_panels = document.querySelectorAll(".tab_container .tab_panel");
 
-
-
-
-// let profile_info = {
-//   fName : 'John',
-//   lName : 'Doe',
-//   Email : 'johndoe123@gmail.com',
-//   Phone : '09992584691',
-//   Pass : '12345',
-//   DoB : 
-//     {
-//       Month : 'May',
-//       Day : '05',
-//       Year : '1225'
-//     }
-//   ,
-//   Address : 
-//     {
-//       AddressOne : 'Nasipit Talamban',
-//       AddressTwo : '',
-//       City : 'Cebu',
-//       Country : 'Philippines',
-//       Zip_Code : '6000'
-//     }
-//   ,
-//   Licsense : 
-//     {
-//       License_no : 'DO1-12-123456',
-//       Country : 'Philippines',
-//       DoE : 
-//       {
-//         Month : 'January',
-//         Day : '08',
-//         Year : '2025'
-//       }
-//     }
-// };
 function showData() {
   $('#user_name').html(profile_info.fName + ' ' + profile_info.lName);
   $('#user_email').html(profile_info.Email);
@@ -57,10 +17,12 @@ function showPanel(panelIndex) {
   tab_buttons.forEach(function(node){
     node.style.backgroundColor = "";
     node.style.color = "";
+    node.style.border = "";
   });
 
-  tab_buttons[panelIndex].style.backgroundColor="#FD6621";
-  tab_buttons[panelIndex].style.color="white";  
+  tab_buttons[panelIndex].style.backgroundColor="#5D6C89";
+  tab_buttons[panelIndex].style.color="white";
+  tab_buttons[panelIndex].style.border="1px solid rgba(0, 0, 0, 0.5)";  
 
   tab_panels.forEach(function(node){
     node.style.display = "none";
@@ -138,32 +100,3 @@ function editData() {
 }
 showPanel(0);
 showData();
-
-
-
-// else if (dataID == 'address_section') {
-//   var addOne = $('#address_line_one').val();
-//   var addTwo = $('#address_line_two').val();
-//   var city = $('#new_city').val();
-//   var zipCode = $('#zip_code').val();
-//   var country = $('#address_country').val();
-//   //#region validation
-//   if(addOne != '') {
-//     profile_info.Address.AddressOne = $('#address_line_one').val();
-//   }
-//   if(addTwo != '') {
-//     profile_info.Address.AddressTwo = $('#address_line_two').val();
-//   }
-//   if(city != '') {
-//     profile_info.Address.City = $('#new_city').val();
-//   }
-//   if(zipCode != '') {
-//     profile_info.Address.Zip_Code = $('#zip_code').val();
-//   }
-//   if(country != '') {
-//     profile_info.Address.Country = $('#address_country').val();
-//   } 
-//   //#endregion
-// }
-// if(error == 0) {
-//   closeEdit(editID, ID);

@@ -1,50 +1,49 @@
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
-
 <main>
-
      <!-- SERVICES -->
-
-     <section id="services">
+     <section class="service-list" id="services">
+          
           <div class="container">
                <div class="row d-flex justify-content-around">
-                    <div class="col d-flex">
-                         <div class="col-md-2 service__img"></div>
-
-                         <div class="col-md-10">
-                              <div class="service__detail">
-     
-                                   <h2 class="service__title">Fast and Secure Payment</h2>
-     
-                                   <p class="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat possimus distinctio vero qui harum facilis? Odio voluptatem esse maxime reprehenderit. Nobis maxime quas labore tenetur repudiandae recusandae magnam quis dignissimos.</p>
-                              </div>
-                         </div>
-
+                    <div class="col-12">
+                         <h1>We Offer</h1>
                     </div>
-
-                    <div class="col d-flex">
-                         <div class="col-md-2 service__img"></div>
-
-                         <div class="col-md-10">
-                              <div class="service__detail">
-     
-                                   <h2 class="service__title">Special Prices</h2>
-     
-                                   <p class="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat possimus distinctio vero qui harum facilis? Odio voluptatem esse maxime reprehenderit. Nobis maxime quas labore tenetur repudiandae recusandae magnam quis dignissimos.</p>
+                    <div class="col d-flex offers-card">
+                         <div class="card" style="width: 18rem;">
+                              <img src="../images/fast-secure-payment.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Fast and Secure payment</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <div class="btn-alt3" >
+                                   <a href="#" class="btn">Read More...</a>
+                                </div>
                               </div>
                          </div>
-
                     </div>
-
-                    <div class="col d-flex">
-                         <div class="col-md-2 service__img"></div>
-                         <div class="col-md-10">
-                              <div class="service__detail">
-                                   <h2 class="service__title">Modern Cars</h2>
-                                   <p class="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat possimus distinctio vero qui harum facilis? Odio voluptatem esse maxime reprehenderit. Nobis maxime quas labore tenetur repudiandae recusandae magnam quis dignissimos.</p>
+                    <div class="col d-flex offers-card">
+                         <div class="card" style="width: 18rem;">
+                              <img src="../images/special-prices.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Special Prices</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <div class="btn-alt3" >
+                                   <a href="#" class="btn">Read More...</a>
+                                </div>
                               </div>
                          </div>
-
+                    </div>
+                    <div class="col d-flex offers-card">
+                         <div class="card" style="width: 18rem;">
+                              <img src="../images/quality-service.jpg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Quality Service</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <div class="btn-alt3" >
+                                   <a href="#" class="btn">Read More...</a>
+                                </div>
+                              </div>
+                         </div>
                     </div>
                </div>
           </div>
@@ -52,13 +51,13 @@
      
      <!-- ABOUT US -->
 
-     <section id="about">
+     <section class="about-list" id="about">
           <div class="container">
                <div class="row">
-                    <div class="col-md-12 d-flex justify-content-center mb-5">
-                         <h2>About us</h2>
+                    <div class="col-md-12 d-flex justify-content-center mb-5 section-title">
+                         <h1>About Us</h1>
                     </div>
-                    <div class="col-md-6 col-sm-12 pb-5 pr-5 pl-5">
+                    <div class="col-md-5 col-sm-12 pb-5 pr-5 pl-5">
                          
                          <div class="about__img d-flex flex-row justify-content-end pr-5">
                               <div class="figure__one"></div>
@@ -75,9 +74,9 @@
                          
                     </div>
 
+                    <div class="col"></div>
 
-
-                    <div class="col-md-6 col-sm-12 pr-5 pl-5">
+                    <div class="col-md-5 col-sm-12 pr-5 pl-5">
                          <div class="section-title__about">
                               <h2>We are a Car Rental Company</h2>
                          </div>
@@ -102,7 +101,7 @@
 
      <!-- CONTACT -->
 
-     <section id="contact">
+     <section class="contact-list" id="contact">
           <div class="container">
                <div class="row">
                     <div class="col-md-6 col-sm-12">
@@ -118,8 +117,8 @@
                                    <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required></textarea>
                               </div>
 
-                              <div class="col-md-4 col-sm-12">
-                                   <input type="submit" class="form-control" name="send message" value="Send Message">
+                              <div class="col-md-4 col-sm-12 btn-blue">
+                                   <input type="submit" class="btn" name="send message" value="Send Message">
                               </div>
 
                          </form>

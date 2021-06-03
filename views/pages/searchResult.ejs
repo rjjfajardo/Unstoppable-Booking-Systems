@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+
+    <title>Unstoppable Car Rental</title>
+</head>
+<body class="body-wrap nav-style-two">
+  <%- include('../partials/navbar'); %>
+  <!-- CONTENT -->
+  <div class="container filter-content" id="filter-content" style="padding: 0">
+    <div class="d-flex filter-box">
+      <div class="filter-title d-flex">
+        <h5>Search Results</h5>
+        <h5 class="ml-2" style="color: rgba(0, 0, 0, 0.3); font-weight: 400;">(126)</h5>
+      </div>
+      <div class="d-flex filter-buttons ml-auto">
+        <button class="btn m-0 p-0" id="list-btn" disabled>
+          <i class="bi bi-list active" id="grid-icon"></i>
+        </button>
+        <div class="vertical-hr"></div>
+        <button class="btn m-0 p-0" id="grid-btn">
+          <i class="bi bi-grid-fill"></i>
+        </button>
+      </div>
+    </div>
+    <hr>
+    <div class="filter-items">
+
+      <% if(car.length == 0){ %>
+        <div class="container px-lg-5">
+          <div class="row mx-lg-n5">
+            <div class="col py-3 px-lg-5">
+            </div>
+         
+              
+              <div class="alert alert-warning">
+                <h3>Sorry, no cars found with those values.... </h3>
+              </div>
+           
+            <div class="col py-3 px-lg-5">
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+
+      <section class="row list">
+        <% for(var i=0; i < car.length; i++) { %>
+          <div class="col-md-12 car-card">
+            <div class="card mb-3"">
+              <div class="row g-0">
+                <div class="col-md-4 car-img">
+                  <img src="<%=car[i].image %>" alt="..." >
+                </div>
+                <div class="col-md-5 car-info">
+                  <div class="card-body">
+                    <h5 ><%= car[i].vehicle_brand_model %></h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+                <div class="vertical-hr c-hr" style="height: 135px; margin: auto 0"></div>
+                <div class="col button-list">
+                  <div class="btn-alt2">
+                    <a href="/booking/<%= car[i].id %>" class="active btn btn-block">Rent Now</a>
+                    <a href="/view_car/<%= car[i].id %>" class="btn btn-block mt-3">View Details</a>
+                    <div class="price-perday mt-3">
+                      <p ><%= car[i].price_per_day %>/day</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </section> 
+    </div>
+  </div>
+  
+  <%- include('../partials/footer') %>
+
+  <script>
+    $(document).ready(function() {
+      $("#list-btn").click(function() {
+        $(".car-card").addClass("col-md-12");
+        $(".car-card").removeClass("col-md-4");
+        $(".car-img").removeClass("col-md-12");
+        $(".car-img").addClass("col-md-4");
+        $(".button-list").removeClass("col-md-12");
+        $(".car-info").removeClass("col-md-12");
+        $(".car-info").addClass("col-md-5");
+
+        $("#grid-btn").removeAttr("disabled");
+        $("#grid-btn").find("i").removeClass("active");
+        $(this).attr("disabled", true);
+        $(this).find("i").addClass("active");
+        $(".c-hr").removeClass("hide-hr");
+      });
+      $("#grid-btn").click(function() {
+        $(".car-card").addClass("col-md-4");
+        $(".car-card").removeClass("col-md-12");
+        $(".car-img").removeClass("col-md-4");
+        $(".car-img").addClass("col-md-12");
+        $(".button-list").addClass("col-md-12");
+        $(".car-info").removeClass("col-md-5");
+        $(".car-info").addClass("col-md-12");
+
+        $("#list-btn").removeAttr("disabled");
+        $("#list-btn").find("i").removeClass("active");
+        $(this).attr("disabled", true);
+        $(this).find("i").addClass("active");
+
+        $(".c-hr").addClass("hide-hr");
+      });
+    });
+  </script>
+
+</body>
+</html>

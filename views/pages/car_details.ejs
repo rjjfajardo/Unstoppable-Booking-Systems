@@ -1,172 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/all.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+  <%- include('../partials/head'); %>
+
   <title>Car Details</title>
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><img src="/images/logo.png" style="width: 100px;"alt=""></a> 
-      <div class="navbar justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav justify-content-end">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user-circle" style="font-size: 30px; color: orange;"></i>
-              <!-- Add dynamic user here -->
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/profile">Account Info</a></li>
-              <li><a class="dropdown-item" href="#">Modify Reservation</a></li>
-              <li><a class="dropdown-item" href="#">Recent Searches</a></li>
-              <li><a class="dropdown-item" href="#">Contact Us</a></li>
-              <li><a class="dropdown-item" href="#">About Us</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-            </ul>
-          </li>
-          <li>
-            <!-- Insert Bell notif here -->
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<body class="body-wrap nav-style-two">
   
-  <div class="container mt-5 content">
-    <div class="btn_main">
-      <a href="javascript:history.go(-1)" class="previous">&laquo;Go Back</a>
-    </div>
-    <div class="row" id="image_gallery">
-      <div class="col-lg-8 gallery_row">
-        <!-- APPEND IMAGE -->
-        
-        <img src="<%= car[0].image%>" alt=""> 
+  <%- include('../partials/navbar'); %>
+  
+  <section>
+    <div class="container mt-5 content">
+      <div class="btn-blue mb-2">
+        <button id="prev" class="prev-btn btn ">
+          <i style="font-size:16px" class="fa">&#xf060;</i>
+        </button>
       </div>
-      <div class="col-lg-2 col-md-12 side_bar_img">
-        <div class="col">
-          <img src="" class="gallery_side_img" id="img1">
+      <div class="row" id="image_gallery">
+        <div class="col-lg-8 gallery_row">
+          <!-- APPEND IMAGE -->
+          <div class="gallery_img">
+            <img src="<%= car[0].image%>" alt="" id="img0">
+          </div>
         </div>
-        <div class="col">
-          <img src="" class="gallery_side_img" id="img2">
+        <div class="col-lg-2 col-md-12 side_bar_gallery">
+          <div class="col">
+            <img src="<%= car[0].image %>" class="side_bar_img" id="img1">
+          </div>
+          <div class="col">
+            <img src="<%= car[0].image %>" class="side_bar_img" id="img2">
+          </div>
+          <div class="col">
+            <img src="<%= car[0].image %>" class="side_bar_img" id="img3">
+          </div>
         </div>
-        <div class="col">
-          <img src="" class="gallery_side_img" id="img3">
-        </div>
+        <div class="col"></div>
       </div>
-      <div class="col"></div>
-    </div>
-    <div class="row mt-5 detail_row">
-      <div class="col-lg-8 detail_field">
-        <!-- TITLE -->
-        <h5 id="title"></h5>
-        <hr>
-        <h5>Description</h5>
-        <!-- DESCRIPTION -->
-        <p id="description"></p>
-        <hr>
-        <h5>Specification</h5>
-        <ul id="specs">
-          <li><i class="fas fa-users">&nbsp;&nbsp;<%= car[0].capacity %></i></li>
-          <li style="margin-left: 100px;"><i class="fas fa-car">&nbsp;&nbsp;<%= car[0].transmission %></i></li>
-          <li style="margin-left: 100px;"><i class="fas fa-car">&nbsp;&nbsp;<%= car[0].transmission %></i></li>
-          <li style="margin-left: 100px;"><i class="fas fa-car">&nbsp;&nbsp;<%= car[0].transmission %></i></li>
-        </ul>
-        <hr>
+      <div class="row mt-5 detail_row">
+        <div class="col-lg-8 detail_field">
+          <!-- TITLE -->
+          <h5 id="title"></h5>
+          <hr>
+          <h5>Description</h5>
+          <!-- DESCRIPTION -->
+          <p id="description"></p>
+          <hr>
+          <h5>Specification</h5>
+          <ul id="specs">
+            <li><i class="fas fa-users">&nbsp;&nbsp;<%= car[0].capacity %></i></li>
+            <li style="margin-left: 100px;"><i class="fas fa-car">&nbsp;&nbsp;<%= car[0].transmission %></i></li>
+            <li style="margin-left: 100px;"><i class="fas fa-car">&nbsp;&nbsp;<%= car[0].transmission %></i></li>
+            <li style="margin-left: 100px;"><i class="fas fa-car">&nbsp;&nbsp;<%= car[0].transmission %></i></li>
+          </ul>
+          <hr>
+        </div>
+        <div class="col-lg-4 detail_field"></div>
       </div>
-      <div class="col-lg-4 detail_field"></div>
     </div>
-  </div>
+  
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <!-- <div id="caption"></div> -->
+    </div>
+    <br><br><br>
+  </section>
+  
+  <%- include('../partials/footer'); %>
 
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
-  </div>
-  <br><br><br>
-  <!-- footer -->
-  <footer id="footer">
-    <div class="footer__wrapper">
-        <div class="row pb-5 mb-5">
-            <div class="col-sm-6 col-md-4 pl-3">
-                <h2>UNSTOPPABLE</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, placeat porro illo maiores reiciendis, perferendis earum, aspernatur adipisci quam cupiditate eaque neque enim voluptatum quia recusandae assumenda eum sequi. Odio?</p>
-            </div>
-            <div class="col-sm-6 col-md-2 pl-3">
-                <h3 class="footer__title">Visit</h3>
-                <p>Nasipit Talamban Cebu City 34 Tesla, Site 100 Unstoppable Car Rentals</p>
-                <h3 class="footer__title">Contacts</h3>
-                <p>johndoe@gmail.com<br>999123456789</p>
-            </div>
-            <div class="col-sm-6 col-md-2 pl-3">
-                <h3 class="footer__title">Explore</h3>
-                    <span class="d-sm-flex">
-                    <a href="#">Home</a>
-                </span>
-                <span class="d-sm-flex">
-                    <a href="#">About Us</a>
-                </span>
-                <span class="d-sm-flex">
-                    <a href="#">Offers</a>
-                </span>
-                <span class="d-sm-flex">
-                    <a href="#">Contacts</a>
-                </span>
-            </div>
-            <div class="col-sm-6 col-md-2 pl-3">
-                <h3 class="footer__title d-flex">Follow</h3>
-                <span class="d-sm-flex">
-                    <a href="#">Instagram</a>
-                </span>
-                <span class="d-sm-flex">
-                    <a href="#">Twitter</a>
-                </span>
-                <span class="d-sm-flex">
-                    <a href="#">Facebook</a>
-                </span>
-            </div>
-            <div class="col-sm-6 col-md-2 pl-3">
-                <h3 class="footer__title">Legal</h3>
-                <span class="d-sm-flex">
-                    <a href="#">Terms</a>
-                </span>
-                <span class="d-sm-flex">
-                    <a href="#">Privacy</a>
-                </span>
-            </div>
-        </div>
-        <p class="text-muted">© Copyright 2021, Unstoppable Car Rentals</p>
-    </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
   <script>
-    const content = document.querySelector('.content');
-
+    
     $(document).ready(function() {
-      let img_source = sessionStorage.getItem("img");
-      let detail_title = sessionStorage.getItem("detail_title");
-      let detail_specs = JSON.parse(sessionStorage.getItem("detail_specs"));
 
-      $("#img0").attr("src", img_source);
-      for (let i=0; i < 3; i++) {
-        $("#img" + (i + 1)).attr("src", img_source);
-      }
       $("img").click(function() {
         zoom(this.id);
       });
 
-      $("#title").text(detail_title);
       $("#description").text("You can add here your description.");
 
       for (let j = 0; j < detail_specs.length; j++) {
@@ -174,30 +84,34 @@
         spec_li.innerText = detail_specs[j];
         $("#specs").append(spec_li);
       }
+    });
 
+    $("#prev").click(function() {
+        window.history.back();
     });
 
     //RESIZE
     $(window).resize(function () {
       var viewportWidth = $(window).width();
       if (viewportWidth < 993) {
-        $(".side_bar_img").addClass('d-flex');
-        $(".side_bar_img").addClass('pt-5');
+        $(".side_bar_gallery").addClass('d-flex');
+        $(".side_bar_gallery").addClass('pt-5');
       } else {
-        $(".side_bar_img").removeClass('d-flex');
-        $(".side_bar_img").removeClass('pt-5');
+        $(".side_bar_gallery").removeClass('d-flex');
+        $(".side_bar_gallery").removeClass('pt-5');
       }
     });
+
     //MODAL
     function zoom(img_id) {
       let modal = $("#myModal");
       let img = document.getElementById(img_id);
       let modalImg = $("#img01");
+      modal.css("display", "block");
+      modalImg.attr('src', img.src);
       $(".close").click(function() {
         modal.css("display", "none");
       });
-      modal.css("display", "block");
-      modalImg.attr('src', img.src);
     }
   </script>
 </body>
