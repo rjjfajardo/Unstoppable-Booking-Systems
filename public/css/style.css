@@ -201,6 +201,7 @@ HEADER STYLES LANDING PAGE
   position: relative;
   background-image: url("../images/header-bg.svg");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
 }
@@ -1036,19 +1037,35 @@ PROFILE PAGE STYLES
 FOOTER STYLE
 ***************************/
 
-.rs-body {
+.rs-body-log,
+.rs-body-reg {
   position: relative;
   background-image: url("../images/header-bg.svg");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
+}
+
+.rs-body-log {
+  height: 80vh;
+}
+.rs-body-reg {
+  height: 123vh;
 }
 
 .log-wrap,
 .reg-wrap {
-  margin: 8.5rem auto !important;
   border-radius: 30px;
   padding: 0;
   background-color: white;
+}
+
+.log-wrap {
+  margin: 8.5rem auto !important;
+}
+
+.reg-wrap {
+  margin: 3.5rem auto !important;
 }
 
 .reg-wrap {
@@ -1063,6 +1080,7 @@ FOOTER STYLE
   position: relative;
   background-image: url("../images/login-side-img.jpg");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   min-height: 70vh;
 }
@@ -1072,6 +1090,7 @@ FOOTER STYLE
   background-color: white;
   background-image: url("../images/login-side-img.jpg");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   height: 100%;
   min-height: 45vh;
