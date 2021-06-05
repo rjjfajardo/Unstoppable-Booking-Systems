@@ -6,82 +6,222 @@
     <title>Unstoppable Car Rental</title>
 </head>
 <body class="body-wrap nav-style-two">
-  <%- include('../partials/navbar'); %>
-  <!-- CONTENT -->
-  <div class="container filter-content" id="filter-content" style="padding: 0">
-    <div class="d-flex filter-box">
-      <div class="filter-title d-flex">
-        <h5>Search Results</h5>
-        <h5 class="ml-2" style="color: rgba(0, 0, 0, 0.3); font-weight: 400;">(126)</h5>
-      </div>
-      <div class="d-flex filter-buttons ml-auto">
-        <button class="btn m-0 p-0" id="list-btn" disabled>
-          <i class="bi bi-list active" id="grid-icon"></i>
-        </button>
-        <div class="vertical-hr"></div>
-        <button class="btn m-0 p-0" id="grid-btn">
-          <i class="bi bi-grid-fill"></i>
-        </button>
-      </div>
-    </div>
-    <hr>
-    <div class="filter-items">
 
-      <% if(car.length == 0){ %>
-        <div class="container px-lg-5">
-          <div class="row mx-lg-n5">
-            <div class="col py-3 px-lg-5">
-            </div>
-         
-              
-              <div class="alert alert-warning">
-                <h3>Sorry, no cars found with those values.... </h3>
-              </div>
-           
-            <div class="col py-3 px-lg-5">
+  <%- include('../partials/navbar'); %> 
+
+  <div class="row justify-content-center filter-container">
+    
+    <!-- SIDE BAR -->
+    <div class="col-md-3 col-sm-3 side">  
+      <div class="container filter-content zoom-load">
+        <div class="filter-box">
+
+          <!-- FILTER WRAP TOGGLE -->
+          <div class="d-flex align-items-center justify-content-between side-filter-title">
+            <h5>Filters</h5>
+            <div class="filter-icon open-filter main-filter" data-bs-toggle="collapse" data-bs-target="#filter-list" aria-expanded="false" aria-controls="filter-list" id="main-filter">
+              <div class="filter-icon-menu"></div>
             </div>
           </div>
-        </div>
-        <% } %>
 
+          <hr>
+          <!-- FILTER LIST -->
+          <div class="collapse show" id="filter-list">
 
-      <section class="row list">
-        <% for(var i=0; i < car.length; i++) { %>
-          <div class="col-md-12 car-card">
-            <div class="card mb-3"">
-              <div class="row g-0">
-                <div class="col-md-4 car-img">
-                  <img src="<%=car[i].image %>" alt="..." >
-                </div>
-                <div class="col-md-5 car-info">
-                  <div class="card-body">
-                    <h5 ><%= car[i].vehicle_brand_model %></h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <!-- CAR TYPE -->
+            <div class="side-filter-content" id="car-choices">
+              <div class="row justify-content-center car-type-filter">
+                <button class="col-md-5 choices btn">
+                  <div class="choices-content">
+                    <i class="bi bi-minecart-loaded"></i>
+                    <p>Sedan</p>
                   </div>
+                </button>
+                <button class="col-md-5 choices btn">
+                  <div class="choices-content">
+                    <i class="bi bi-minecart-loaded"></i>
+                    <p>Sedan</p>
+                  </div>
+                </button>
+                <button class="col-md-5 choices btn">
+                  <div class="choices-content">
+                    <i class="bi bi-minecart-loaded"></i>
+                    <p>Sedan</p>
+                  </div>
+                </button>
+                <button class="col-md-5 choices btn">
+                  <div class="choices-content">
+                    <i class="bi bi-minecart-loaded"></i>
+                    <p>Sedan</p>
+                  </div>
+                </button>
+              </div>
+              <hr>
+            </div>
+
+            <!-- PRICE RANGE -->
+            <div>
+              <div class="d-flex align-items-center justify-content-between side-filter-title">
+                <p class="text-muted">Price Range</p>
+                <div class="filter-icon open-filter" data-bs-toggle="collapse" data-bs-target="#price-range" aria-expanded="false" aria-controls="price-range">
+                  <div class="filter-icon-menu"></div>
                 </div>
-                <div class="vertical-hr c-hr" style="height: 135px; margin: auto 0"></div>
-                <div class="col button-list">
-                  <div class="btn-alt2">
-                    <a href="/booking/<%= car[i].id %>" class="active btn btn-block">Rent Now</a>
-                    <a href="/view_car/<%= car[i].id %>" class="btn btn-block mt-3">View Details</a>
-                    <div class="price-perday mt-3">
-                      <p ><%= car[i].price_per_day %>/day</p>
+              </div>
+              <div class="side-filter-content collapse show" id="price-range">
+                <div class="price-selector">
+                  <input type="text" id="rangePrimary" name="rangePrimary" value="" required>
+                  <p id="priceRangeSelected"></P>
+                </div>
+              </div>
+              <hr>
+            </div>
+            
+            <!-- CONDITION -->
+            <div>
+              <div class="d-flex align-items-center justify-content-between side-filter-title">
+                <p class="text-muted">Condition</p>
+                <div class="filter-icon open-filter" data-bs-toggle="collapse" data-bs-target="#condition" aria-expanded="false" aria-controls="condition">
+                  <div class="filter-icon-menu"></div>
+                </div>
+              </div>
+              <div class="side-filter-content collapse show" id="condition">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Excellent
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Good
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Bad
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Broken
+                  </label>
+                </div>
+              </div>
+              <hr>
+            </div>
+
+            <!-- TYPE -->
+            <div>
+              <div class="d-flex align-items-center justify-content-between side-filter-title">
+                <p class="text-muted">Type</p>
+                <div class="filter-icon open-filter" data-bs-toggle="collapse" data-bs-target="#type" aria-expanded="false" aria-controls="type">
+                  <div class="filter-icon-menu"></div>
+                </div>
+              </div>
+              <div class="side-filter-content collapse show" id="type">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    All
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Excellent
+                  </label>
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>   
+      </div>  
+    </div>
+
+    <!-- CARS -->
+    <div class="col-md-9 col-sm-9">
+      <div class="container filter-content zoom-load" id="filter-content">
+        <div class="d-flex justify-content-between filter-box">
+          <div class="filter-title d-flex">
+            <h5>Search Results</h5>
+            <h5 style="color: rgba(0, 0, 0, 0.3); font-weight: 400;">(126)</h5>
+          </div>
+          <div class="d-flex filter-buttons">
+            <button class="btn m-0 p-0" id="list-btn" disabled>
+              <i class="bi bi-list active" id="grid-icon"></i>
+            </button>
+            <div class="vertical-hr"></div>
+            <button class="btn m-0 p-0" id="grid-btn">
+              <i class="bi bi-grid-fill"></i>
+            </button>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="filter-items">
+          <% if(car.length == 0){ %>
+            <div class="container px-lg-5">
+              <div class="row mx-lg-n5">
+                <div class="col py-3 px-lg-5">
+                </div>
+                  
+                  <div class="alert alert-warning">
+                    <h3>Sorry, no cars found with those values.... </h3>
+                  </div>
+              
+                <div class="col py-3 px-lg-5">
+                </div>
+              </div>
+            </div>
+          <% } %>
+  
+          <section class="row list">
+            <% for(var i=0; i < car.length; i++) { %>
+              <div class="col-md-12 car-card">
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div class="col-md-4 car-img">
+                      <img src="<%=car[i].image %>" alt="..." >
+                    </div>
+                    <div class="col-md-5 car-info">
+                      <div class="card-body">
+                        <h5 ><%= car[i].vehicle_brand_model %></h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                      </div>
+                    </div>
+                    <div class="vertical-hr c-hr" style="height: 135px; margin: auto 0"></div>
+                    <div class="col button-list">
+                      <div class="btn-alt2">
+                        <a href="/booking/<%= car[i].id %>" class="active btn btn-block">Rent Now</a>
+                        <a href="/view_car/<%= car[i].id %>" class="btn btn-block mt-3">View Details</a>
+                        <div class="price-perday mt-3">
+                          <p ><%= car[i].price_per_day %>/day</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        <% } %>
-      </section> 
+            <% } %>
+          </section> 
+        </div>
+      </div>
     </div>
   </div>
-  
+
   <%- include('../partials/footer') %>
 
   <script>
     $(document).ready(function() {
+      let menuOpen = true;
+
       $("#list-btn").click(function() {
         $(".car-card").addClass("col-md-12");
         $(".car-card").removeClass("col-md-4");
@@ -97,6 +237,7 @@
         $(this).find("i").addClass("active");
         $(".c-hr").removeClass("hide-hr");
       });
+
       $("#grid-btn").click(function() {
         $(".car-card").addClass("col-md-4");
         $(".car-card").removeClass("col-md-12");
@@ -113,7 +254,40 @@
 
         $(".c-hr").addClass("hide-hr");
       });
+
+      //FILTER-ICON
+      $(".filter-icon").click(function() {
+
+        if($(this).hasClass('open-filter')) {
+          $(this).removeClass('open-filter');
+
+          if($(this).hasClass('main-filter')) {
+            $(".side").removeClass('col-md-3');
+            $('.side').addClass('col-md-2');
+          }
+        } else {
+          $(this).addClass('open-filter');
+          if($(this).hasClass('main-filter')) {
+            $(".side").removeClass('col-md-2');
+            $('.side').addClass('col-md-3');
+          }
+        }
+      });
+      
+      $("#rangePrimary").ionRangeSlider({
+        type: "double",
+        // grid: true,
+        min: 0,
+        max: 10000,
+        from: 1000,
+        to: 5000,
+        skin: "round",
+        prefix: "₱"
+      });
+
     });
+
+
   </script>
 
 </body>

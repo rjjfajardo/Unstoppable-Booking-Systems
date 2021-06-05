@@ -12,31 +12,31 @@
   <section>
     <div class="container mt-5 content">
       <div class="btn-blue mb-2">
-        <button id="prev" class="prev-btn btn ">
+        <button id="prev" class="prev-btn btn zoom-load">
           <i style="font-size:16px" class="fa">&#xf060;</i>
         </button>
       </div>
       <div class="row" id="image_gallery">
         <div class="col-lg-8 gallery_row">
           <!-- APPEND IMAGE -->
-          <div class="gallery_img">
+          <div class="gallery_img zoom-load">
             <img src="<%= car[0].image%>" alt="" id="img0">
           </div>
         </div>
         <div class="col-lg-2 col-md-12 side_bar_gallery">
-          <div class="col">
+          <div class="col zoom-load">
             <img src="<%= car[0].image %>" class="side_bar_img" id="img1">
           </div>
-          <div class="col">
+          <div class="col zoom-load">
             <img src="<%= car[0].image %>" class="side_bar_img" id="img2">
           </div>
-          <div class="col">
+          <div class="col zoom-load">
             <img src="<%= car[0].image %>" class="side_bar_img" id="img3">
           </div>
         </div>
         <div class="col"></div>
       </div>
-      <div class="row mt-5 detail_row">
+      <div class="row mt-5 detail_row zoom-load">
         <div class="col-lg-8 detail_field">
           <!-- TITLE -->
           <h5 id="title"></h5>

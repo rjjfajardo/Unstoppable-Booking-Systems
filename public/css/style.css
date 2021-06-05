@@ -28,6 +28,10 @@ input {
   font-size: 14px;
 }
 
+.zoom-load {
+  animation: zoomload 0.5s ease-in-out;
+}
+
 /****************************
 BUTTON STYLES GLOBAL
 *****************************/
@@ -140,8 +144,20 @@ BUTTON STYLES GLOBAL
 .btn-blue a:hover,
 .btn-blue input:hover,
 .btn-blue button:hover {
-  opacity: 0.6;
+  animation: bop 0.35s ease-in-out;
   color: #fbf6f3;
+}
+
+@keyframes bop {
+  33% {
+    transform: translateY(-10%);
+  }
+  66% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-6%);
+  }
 }
 
 .btn-alt2 a.active:hover {
@@ -167,7 +183,7 @@ NAV BAR && BODY GLOBAL STYLE
 }
 
 .body-wrap {
-  background-color: #ebebeb;
+  background-color: #e6e6e6;
 }
 
 /****************************
@@ -274,7 +290,7 @@ HEADER STYLES LANDING PAGE
 }
 
 .custom-shape-divider-bottom-1619036141 .shape-fill {
-  fill: #ebebeb;
+  fill: #e6e6e6;
 }
 /* END */
 
@@ -431,7 +447,7 @@ CONTACT SECTION LANDING PAGE
   border-radius: 5px;
   box-shadow: none;
   margin: 10px 0;
-  background-color: #ebebeb;
+  background-color: #e6e6e6;
 }
 
 .contact-list input {
@@ -626,9 +642,8 @@ FILTERED SEARCH STYLES
 
 .filter-content {
   margin: 100px 0 200px 0;
-
+  padding: 0 !important;
   background-color: #fbf6f3;
-  min-height: 50vh;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -644,12 +659,126 @@ FILTERED SEARCH STYLES
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.filter-container {
+  margin: 0 12px !important;
+}
+
+.filter-container a {
+  text-decoration: none;
+  color: #5d6c89;
+}
+
+/* SIDE-FILTER */
+
+#filter-list {
+  transition: all 0.3s ease-in-out;
+}
+
+#filter-list hr {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.side-filter-title p {
+  margin: auto 0;
+  font-size: 15px;
+}
+
+.side-filter-content {
+  padding: 0 20px;
+  margin: 0;
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* FILTER TOGGLE ICON */
+.filter-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.filter-icon-menu {
+  width: 18px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.filter-icon-menu::before,
+.filter-icon-menu::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* ANIMATION */
+
+.filter-icon.open-filter .filter-icon-menu {
+  transform: rotate(180deg);
+}
+
+.filter-icon.open-filter .filter-icon-menu::before {
+  transform: rotate(90deg);
+}
+
+.side {
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes zoomload {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 100%;
+    transform: scale(1);
+  }
+}
+
+.side-filter-content .choices {
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  text-align: center;
+  margin: 5px;
+  padding: 0;
+}
+
+.car-type-filter {
+  margin: 25px 0 !important;
+  padding: 0 5px;
+}
+
+.choices-content {
+  margin: 10px 0;
+}
+
 .filter-title,
 .filter-buttons {
   display: inline-block;
   margin: 2vw;
-  margin: auto 0;
+  margin: 3px 0;
   padding: 20px;
+}
+
+.side-filter-title {
+  margin: 2vw;
+  margin: 3px 0;
+  padding: 17px;
 }
 
 .filter-buttons {
@@ -673,12 +802,11 @@ FILTERED SEARCH STYLES
 }
 
 .filter-buttons .bi.active {
-  color: #36d6e7;
+  color: #5d6c89;
 }
 
 .filter-buttons .bi:hover {
-  color: #36d6e7;
-  opacity: 0.7;
+  color: #5d6c89;
 }
 
 .car-img img {
@@ -1098,7 +1226,7 @@ FOOTER STYLE
 
 .rs-form {
   padding: 30px 50px !important;
-  background-color: #ebebeb;
+  background-color: #e6e6e6;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
